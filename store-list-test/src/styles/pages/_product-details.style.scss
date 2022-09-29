@@ -1,0 +1,41 @@
+.product-details{
+    border: 2px solid black;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .title{
+        position: absolute;
+        background-color: white;
+        top:-16px;
+        left:20px;
+        padding: 0.5rem;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        width: 100%;
+
+        img{
+            height: 200px;
+            width: fit-content;
+        }  
+
+        label{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .save{
+            width: fit-content;
+            align-self: end;
+            background-color: rgb(14, 195, 14);
+        }
+    }
+    
+}

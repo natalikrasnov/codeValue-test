@@ -25,16 +25,16 @@ const ActiveProductsListReducer = (products, action) => {
       return [...products, action.product];
     case "SAVE_PRODUCT":
       return products.map((el) => {
-          if (el.id === action.product.id) {
-              el.name = action.product.name;
-              el.description = action.product.description;
-              el.price = action.product.price;
-              el.img = action.product.img;
+        if (el.id === action.product.id) {
+          el.name = action.product.name;
+          el.description = action.product.description;
+          el.price = action.product.price;
+          // el.img = action.product.img;
         }
         return el;
       });
-    case "DELETE_product":
-      return products.filter((el) => el.id !== action.productId);
+    case "DELETE_PRODUCT":
+      return [...products.filter((el) => el.id !== action.productId)];
     default:
       return [...products];
   }
