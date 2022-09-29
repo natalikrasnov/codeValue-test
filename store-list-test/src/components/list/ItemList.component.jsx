@@ -6,9 +6,7 @@ export function ItemList({ data }) {
             {
                 data && data.map((el, index) =>
                     <ProductListItem key={index}
-                        name={el.name}
-                        description={el.description}
-                        id={el.id}
+                        data={el}
                     />
                 )
             }

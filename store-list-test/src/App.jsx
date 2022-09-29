@@ -5,7 +5,7 @@ import './styles/_main.style.scss'
 function App() {
 
   return (
-    <Main />
+      <Main />
   )
 }
 

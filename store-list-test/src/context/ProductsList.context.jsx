@@ -14,12 +14,7 @@ const ProductsListContextProvider = (props) => {
     }
 
     const [products, dispatchProducts] = useReducer(ActiveProductsListReducer, getProducts() || ProductsListInitialState );
-    const [displayedProduct, setDisplayedProduct] = useState(null)
 
-    const getProductById = (id) => {
-        return products.find(product => product.id === id)
-    }
-    
     useEffect(() => {
         localStorage.setItem('products', JSON.stringify(products))
     }, [products])
@@ -27,10 +22,7 @@ const ProductsListContextProvider = (props) => {
     return (
         <ProductsListContext.Provider value={{
             products,
-            dispatchProducts,
-            displayedProduct,
-            setDisplayedProduct,
-            getProductById
+            dispatchProducts
         }}>
             {props.children }
         </ProductsListContext.Provider>

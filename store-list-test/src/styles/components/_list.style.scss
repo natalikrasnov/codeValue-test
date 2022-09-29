@@ -13,7 +13,6 @@
         .add {
             background-color: rgb(34, 216, 34);
         }
-
     }
 
     .products-content{
@@ -31,6 +30,17 @@
             margin: auto;
         } 
 
+    }
+
+    .pagination{
+        align-self: baseline;
+        padding-left: 25%;
+        display: flex;
+        gap:2.5rem;
+
+        a{
+            cursor: pointer;
+        }
     }
     
 

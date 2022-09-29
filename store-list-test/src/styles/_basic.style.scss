@@ -15,3 +15,11 @@ button{
         opacity: 0.8;
     }
 }
+
+.not-found{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}

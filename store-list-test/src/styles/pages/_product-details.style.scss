@@ -36,6 +36,13 @@
             align-self: end;
             background-color: rgb(14, 195, 14);
         }
+
+        .price{
+            display: block;
+            input{
+                width: 20%;
+            }
+        }
     }
     
 }

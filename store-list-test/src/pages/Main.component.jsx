@@ -1,6 +1,6 @@
-import { List, Header } from "../components";
+import {  Header } from "../components";
 import ProductsListContextProvider from "../context/ProductsList.context";
-import { ProductDetails } from "./ProductDetails.component";
+import  { MainRouter } from '../router/MainRouter.router'
 
 export function Main() {
 
@@ -8,7 +8,7 @@ export function Main() {
         <div className="main">
             <Header />
             <ProductsListContextProvider>
-                    <List />
+               <MainRouter />
             </ProductsListContextProvider>
         </div>
     )

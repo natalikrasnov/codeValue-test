@@ -2,11 +2,20 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useContext } from "react"
 import { ProductsListContext } from "../context/ProductsList.context"
-import {saveProductAction} from '../actions/ProductsList.action'
+import {addProductAction} from '../actions/ProductsList.action'
+import { useLocation } from "react-router-dom"
 
-export function ProductDetails() {
-    const { displayedProduct, getProductById , dispatchProducts} = useContext(ProductsListContext)
-    const productData = displayedProduct ? getProductById(displayedProduct) : null
+const alertMessages = {
+    updated: "updated!",
+    error_name: " Name too short! ",
+    error_price: " Price not valid! ",
+}
+
+export function ProductDetails({data}) {
+    const location = useLocation()
+    console.log(location.state)
+    const { dispatchProducts} = useContext(ProductsListContext)
+    const productData = data || location.state?.productData 
     
     const [nameInput, setNameInput] = useState(productData ? productData.name : '')
     const [descriptionInput, setDescriptionInput] = useState(productData ? productData.description : '')
@@ -21,10 +30,10 @@ export function ProductDetails() {
     
     const checkValidation = () => {
         let errorMessage = ""
-        if (nameInput.length < 30) errorMessage += " Name too short! "
-        if (priceInput <= 0) errorMessage += " Price not valid! "
-        if (errorMessage != '') alert(errorMessage)
-        return errorMessage === ''
+        if (nameInput.length < 30) errorMessage += alertMessages.error_name
+        if (priceInput <= 0) errorMessage += alertMessages.error_price
+        if (errorMessage) alert(errorMessage)
+        return !errorMessage
     }
 
     const saveProduct = (e) => {
@@ -35,10 +44,12 @@ export function ProductDetails() {
         productData.description = descriptionInput
         productData.price = priceInput
 
-        dispatchProducts(saveProductAction({ ...productData }))
+        dispatchProducts(addProductAction({ ...productData }))
         
-        alert("updated!")
+        alert(alertMessages.updated)
     }
+
+    console.log(productData)
 
     return (
         productData && <div className="product-details">
@@ -53,10 +64,10 @@ export function ProductDetails() {
                     Description
                     <textarea rows={5} value={descriptionInput} onChange={(e) => setDescriptionInput(e.target.value)} />
                 </label>
-                <label>
-                    price
+                <label className="price">
+                    price <br></br>
                     <input value={priceInput} onChange={(e) => setPriceInput(e.target.value)} />
-                    $
+                     $
                 </label>
                 <button className="save" type="submit" onClick={saveProduct}>Save</button>
             </form>

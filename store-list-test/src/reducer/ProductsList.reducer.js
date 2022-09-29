@@ -22,17 +22,19 @@ const ActiveProductsListReducer = (products, action) => {
     case "SET_PRODUCTS":
       return [...action.products];
     case "ADD_PRODUCT":
-      return [...products, action.product];
-    case "SAVE_PRODUCT":
-      return products.map((el) => {
-        if (el.id === action.product.id) {
+      let added = false
+      products.map(el => {
+        if (el.id == action.product.id) {
           el.name = action.product.name;
           el.description = action.product.description;
           el.price = action.product.price;
           // el.img = action.product.img;
+          added = true
         }
-        return el;
+       return el;
       });
+      if(added) return [...products]
+      return [...products, action.product];
     case "DELETE_PRODUCT":
       return [...products.filter((el) => el.id !== action.productId)];
     default:

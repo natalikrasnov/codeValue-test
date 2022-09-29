@@ -15,7 +15,7 @@ export function DropDown({ options, defaultValue, onSelect }) {
                 {
                     options
                     &&
-                    options.map((el, i) => <option value={el} key={i}>{el}</option>)
+                    Object.keys(options).map((key, i) => <option value={key} key={i}>{options[key]}</option>)
                 }
             </select>
         </label>
